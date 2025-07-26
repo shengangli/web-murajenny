@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日語教學 | 跟著我一起輕鬆學日文</title>
+    <meta name="description" content="專業日語一對一教學，從零基礎到進階會話，用最親切的方式帶你進入日文的世界">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        /* 平滑滾動效果 */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* 移除 iOS 按鈕預設樣式 */
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* 現代日式設計元素 */
+        .japanese-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .japanese-accent {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .japanese-soft {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        /* 日式分隔線 */
+        .japanese-divider {
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+            height: 1px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 手機優先導航列 -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-lg z-50 border-b border-gray-100">
+        <div class="px-6 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Jenny の日語教室</h1>
+                <!-- 手機選單按鈕 -->
+                <button onclick="toggleMenu()" class="p-2 rounded-lg hover:bg-gray-100 md:hidden">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <!-- 桌面版選單 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-700 hover:text-indigo-600 transition-all duration-300 font-medium relative group">
+                        關於我
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#courses" class="text-gray-700 hover:text-indigo-600 transition-all duration-300 font-medium relative group">
+                        課程介紹
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition-all duration-300 font-medium relative group">
+                        聯絡方式
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 手機版下拉選單 -->
+        <div id="mobile-menu" class="hidden bg-white/95 backdrop-blur-md border-t border-gray-200">
+            <div class="px-6 py-4 space-y-1">
+                <a href="#about" onclick="toggleMenu()" class="block py-4 text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-600 rounded-xl px-4 transition-all duration-300 font-medium">關於我</a>
+                <a href="#courses" onclick="toggleMenu()" class="block py-4 text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-600 rounded-xl px-4 transition-all duration-300 font-medium">課程介紹</a>
+                <a href="#contact" onclick="toggleMenu()" class="block py-4 text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-600 rounded-xl px-4 transition-all duration-300 font-medium">聯絡方式</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 區塊 - Mobile First -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 md:pt-40 md:pb-32 relative overflow-hidden">
+        <!-- 裝飾性背景元素 -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-30">
+            <div class="absolute top-20 right-10 w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-full blur-2xl"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- 手機版：圖片在上 -->
+            <div class="flex flex-col md:flex-row md:items-center md:gap-12">
+                <!-- 創作者照片 - 手機版置頂 -->
+                <div class="mb-12 text-center md:order-2 md:w-1/2 md:mb-0">
+                    <!-- 創作者照片 -->
+                    <div class="relative inline-block">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full blur-lg opacity-30 animate-pulse"></div>
+                        <img src="387268473_331850395915870_6019106238801182068_n.jpg" 
+                             alt="日語老師照片" 
+                             class="relative w-56 h-56 mx-auto rounded-full shadow-2xl object-cover sm:w-72 sm:h-72 md:w-80 md:h-80 ring-4 ring-white/50">
+                    </div>
+                </div>
+                
+                <!-- 文字內容 -->
+                <div class="text-center md:text-left md:order-1 md:w-1/2">
+                    <div class="mb-6">
+                        <span class="inline-block px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-indigo-600 border border-indigo-100 mb-6">
+                            ✨ 專業日語教學 5+ 年經驗
+                        </span>
+                    </div>
+                    <h2 class="text-4xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent mb-6 sm:text-5xl md:text-6xl leading-tight">
+                        用親切的方式，<br><span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">學會實用日語！</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-10 sm:text-xl leading-relaxed">
+                        從零基礎到流暢對話，我會陪伴你的每一步學習旅程。<br class="hidden sm:block">
+                        讓我們一起探索日文的美好世界吧！🌸
+                    </p>
+                    <!-- CTA 按鈕組 -->
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                        <a href="#" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-8 rounded-2xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center">
+                            立即預約免費諮詢
+                        </a>
+                        <a href="#courses" class="bg-white/80 backdrop-blur-sm text-gray-700 py-4 px-8 rounded-2xl font-semibold border border-gray-200 hover:bg-white hover:shadow-lg transition-all duration-300 text-center">
+                            瀏覽課程
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我 - Mobile First -->
+    <section id="about" class="py-20 bg-gradient-to-b from-white to-slate-50 md:py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-4 sm:text-5xl md:text-6xl">關於我</h3>
+                <div class="japanese-divider w-24 mx-auto"></div>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <!-- 個人介紹區域 -->
+                <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-xl border border-white/20 mb-16">
+                    <div class="text-center mb-8">
+                        <span class="inline-block px-6 py-3 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full text-indigo-700 font-medium text-lg mb-6">
+                            🇯🇵 Jenny の自己紹介
+                        </span>
+                    </div>
+                    
+                    <div class="prose prose-lg max-w-none">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6 sm:text-xl">
+                            哈囉！我是<strong class="text-indigo-600">Jenny</strong>，擁有日語教學經驗超過<span class="text-indigo-600 font-semibold">5年</span>。曾在日本留學3年，深入了解日本文化與語言的精髓。
+                            我相信語言學習不只是背單字和文法，更是一種<span class="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-semibold">文化交流的橋樑</span>。
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed sm:text-xl">
+                            我的教學理念是<strong class="text-purple-600">「輕鬆、實用、有趣」</strong>，透過生活化的例子和互動式教學，
+                            讓你在愉快的氛圍中自然而然地掌握日語。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 學生回饋 -->
+                <div class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl p-8 sm:p-12 border border-indigo-100">
+                    <div class="text-center mb-12">
+                        <h4 class="text-3xl font-bold text-gray-800 mb-4 sm:text-4xl">學生心聲</h4>
+                        <p class="text-gray-600 text-lg">真實的學習體驗分享</p>
+                    </div>
+                    <div class="grid gap-8 md:grid-cols-2">
+                        <!-- 回饋卡片 1 -->
+                        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover-lift border border-white/50">
+                            <div class="flex items-start space-x-1 mb-4">
+                                <span class="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="text-gray-700 italic mb-6 text-lg leading-relaxed">
+                                「老師的教學方式很活潑，讓原本覺得困難的文法變得容易理解。
+                                現在我已經可以自信地和日本朋友對話了！」
+                            </p>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                                    美
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">小美</p>
+                                    <p class="text-sm text-gray-500">學習6個月 • N4合格</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 回饋卡片 2 -->
+                        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover-lift border border-white/50">
+                            <div class="flex items-start space-x-1 mb-4">
+                                <span class="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="text-gray-700 italic mb-6 text-lg leading-relaxed">
+                                「從五十音開始學起，現在已經通過N3檢定！
+                                老師總是很有耐心地解答我的問題，真的很感謝！」
+                            </p>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold">
+                                    D
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">David</p>
+                                    <p class="text-sm text-gray-500">學習1年 • N3合格</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 課程項目 - Mobile First -->
+    <section id="courses" class="py-20 bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 md:py-32 relative overflow-hidden">
+        <!-- 背景裝飾 -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-200 to-transparent rounded-full blur-3xl opacity-30"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-blue-200 to-transparent rounded-full blur-3xl opacity-30"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-4 sm:text-5xl md:text-6xl">課程項目</h3>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">選擇最適合你的學習方式，開始你的日語學習之旅</p>
+                <div class="japanese-divider w-24 mx-auto mt-6"></div>
+            </div>
+            <!-- 手機版單欄，平板雙欄，桌面三欄 -->
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+                <!-- 課程卡片 1 -->
+                <div class="bg-white/80 backdrop-blur-sm rounded-3xl card-shadow hover-lift border border-white/50 overflow-hidden group">
+                    <div class="bg-gradient-to-br from-indigo-600 via-purple-600 to-purple-700 text-white p-8 relative">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+                        <div class="relative">
+                            <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+                                <span class="text-2xl">👤</span>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-2">一對一客製課程</h4>
+                            <p class="text-indigo-100">最適合你的學習節奏</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">完全客製化教材</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">彈性上課時間</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">進度追蹤與調整</span>
+                            </li>
+                        </ul>
+                        <div class="text-center border-t border-gray-100 pt-6">
+                            <div class="mb-6">
+                                <p class="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">NT$ 800</p>
+                                <p class="text-gray-500 text-sm mt-1">/ 60分鐘</p>
+                            </div>
+                            <a href="#" class="block w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-6 rounded-2xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform group-hover:scale-105">
+                                立即預約
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 課程卡片 2 -->
+                <div class="bg-white/80 backdrop-blur-sm rounded-3xl card-shadow hover-lift border border-white/50 overflow-hidden group">
+                    <div class="bg-gradient-to-br from-pink-500 via-rose-500 to-red-500 text-white p-8 relative">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+                        <div class="relative">
+                            <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+                                <span class="text-2xl">👥</span>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-2">小班團體課程</h4>
+                            <p class="text-pink-100">與夥伴一起進步</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">最多4人小班</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">互動式學習</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">固定進度安排</span>
+                            </li>
+                        </ul>
+                        <div class="text-center border-t border-gray-100 pt-6">
+                            <div class="mb-6">
+                                <p class="text-4xl font-bold bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent">NT$ 500</p>
+                                <p class="text-gray-500 text-sm mt-1">/ 60分鐘</p>
+                            </div>
+                            <a href="#" class="block w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-4 px-6 rounded-2xl font-semibold hover:from-pink-600 hover:to-rose-600 transition-all duration-300 transform group-hover:scale-105">
+                                了解更多
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 課程卡片 3 -->
+                <div class="bg-white/80 backdrop-blur-sm rounded-3xl card-shadow hover-lift border border-white/50 overflow-hidden group sm:col-span-2 lg:col-span-1">
+                    <div class="bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-600 text-white p-8 relative">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+                        <div class="relative">
+                            <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-2">檢定衝刺班</h4>
+                            <p class="text-cyan-100">JLPT N5-N1 對策</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">歷屆考題解析</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">重點文法整理</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">模擬測驗練習</span>
+                            </li>
+                        </ul>
+                        <div class="text-center border-t border-gray-100 pt-6">
+                            <div class="mb-6">
+                                <p class="text-4xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">NT$ 900</p>
+                                <p class="text-gray-500 text-sm mt-1">/ 60分鐘</p>
+                            </div>
+                            <a href="#" class="block w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-4 px-6 rounded-2xl font-semibold hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 transform group-hover:scale-105">
+                                諮詢課程
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 支持我 - Mobile First -->
+    <section class="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-pink-50 md:py-32 relative overflow-hidden">
+        <!-- 背景裝飾 -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-20">
+            <div class="absolute top-10 right-20 w-24 h-24 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-20 left-20 w-32 h-32 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full blur-2xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="mb-8">
+                    <span class="inline-block px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full text-orange-600 font-medium text-lg border border-orange-100 mb-6">
+                        ✨ 支持我的創作
+                    </span>
+                </div>
+                <h3 class="text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-6 sm:text-5xl md:text-6xl">讓愛延續下去</h3>
+                <p class="text-xl text-gray-700 mb-12 leading-relaxed">
+                    如果你喜歡我的教學內容，歡迎請我喝杯咖啡！☕<br class="hidden sm:block">
+                    你的支持是我持續創作的最大動力 <span class="text-red-500">❤️</span>
+                </p>
+                
+                <!-- 支持按鈕組 -->
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                    <a href="#" class="group bg-white/80 backdrop-blur-sm border-2 border-orange-200 hover:border-orange-300 text-gray-700 px-8 py-4 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 font-semibold text-lg">
+                        <span class="flex items-center justify-center">
+                            <span class="mr-3 text-2xl group-hover:scale-110 transition-transform">☕</span>
+                            Buy Me A Coffee
+                        </span>
+                    </a>
+                    <a href="#" class="group bg-white/80 backdrop-blur-sm border-2 border-green-200 hover:border-green-300 text-gray-700 px-8 py-4 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 font-semibold text-lg">
+                        <span class="flex items-center justify-center">
+                            <span class="mr-3 text-2xl group-hover:scale-110 transition-transform">💚</span>
+                            街口支付贊助
+                        </span>
+                    </a>
+                </div>
+                
+                <!-- 感謝訊息 -->
+                <div class="mt-12 bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/50">
+                    <p class="text-gray-600 text-sm italic">
+                        「每一份支持都是我前進的動力，謝謝你們讓我能持續分享日語學習的美好！」<br>
+                        - Jenny ❤️
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡方式 / 頁尾 - Mobile First -->
+    <footer id="contact" class="bg-gradient-to-br from-slate-900 via-gray-900 to-indigo-900 text-white py-16 relative overflow-hidden">
+        <!-- 背景裝飾 -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-indigo-400 to-purple-400 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-blue-400 to-cyan-400 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-5xl mx-auto">
+
+                
+                <!-- 版權資訊 -->
+                <div class="border-t border-gray-700/50 pt-8">
+                    <div class="text-center text-gray-400">
+                        <p class="mb-2 text-sm">&copy; 2025 Jenny の日語教室. All rights reserved.</p>
+                        <div class="flex justify-center space-x-6 text-xs">
+                            <a href="#" class="hover:text-white transition-colors duration-300">隱私權政策</a>
+                            <span class="text-gray-600">|</span>
+                            <a href="#" class="hover:text-white transition-colors duration-300">服務條款</a>
+                        </div>
+                        <p class="mt-4 text-xs text-gray-500">
+                            Made with ❤️ for Japanese learners everywhere
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 手機選單 JavaScript -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            menu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
